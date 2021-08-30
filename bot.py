@@ -17,7 +17,7 @@ client = TelegramClient('client', api_id, api_hash).start(bot_token=bot_token)
 
 anlik_calisan = []
 
-@client.on(events.NewMessage(pattern='^(?i)/cancel'))
+@client.on(events.NewMessage(pattern='^(?i)/bitir'))
 async def cancel(event):
   global anlik_calisan
   anlik_calisan.remove(event.chat_id)
@@ -25,22 +25,22 @@ async def cancel(event):
 
 @client.on(events.NewMessage(pattern="^/start$"))
 async def start(event):
-  await event.reply("**KULLANICI Etiketleme Bot**, Grup veya kanaldaki neredeyse tüm üyelerden bahsedebilirim ★\nDaha fazla bilgi için **/help**'i tıklayın.",
+  await event.reply("**LaCasade Etiketleme Bot**, Grup veya kanaldaki neredeyse tüm üyelerden bahsedebilirim ★\nDaha fazla bilgi için **/help**'i tıklayın.",
                     buttons=(
-                      [Button.url('🌟 Beni Bir Gruba Ekle', 'https://t.me/KullaniciEtiketleme_bot?startgroup=a'),
-                      Button.url('📣 Support', 'https://t.me/djbyboss'),
-                      Button.url('👮‍♂️ Sahibim', 'https://t.me/byboss')]
+                      [Button.url('🌟 Beni Bir Gruba Ekle', 'https://t.me/LaCasadeEtiket_bot?startgroup=a'),
+                      Button.url('📣 Support', 'https://t.me/kurtoyunuu'),
+                      Button.url('👮‍♂️ Sahibim', 'https://t.me/Furkanbeyy')]
                     ),
                     link_preview=False
                    )
 @client.on(events.NewMessage(pattern="^/help$"))
 async def help(event):
-  helptext = "**Alltagger bot'un Yardım Menüsü**\n\nKomut: /atag \n  Bu komutu, başkalarına bahsetmek istediğiniz metinle birlikte kullanabilirsiniz. \n`Örnek: /atag Günaydın!`  \nBu komutu yanıt olarak kullanabilirsiniz. herhangi bir mesaj Bot, yanıtlanan iletiye kullanıcıları etiketleyerek ve /cancel yazarak etiketleme işlemi biter. 🤗"
+  helptext = "**Alltagger bot'un Yardım Menüsü**\n\nKomut: /atag \n  Bu komutu, başkalarına bahsetmek istediğiniz metinle birlikte kullanabilirsiniz. \n`Örnek: /all Günaydın!`  \nBu komutu yanıt olarak kullanabilirsiniz. herhangi bir mesaj Bot, yanıtlanan iletiye kullanıcıları etiketleyerek ve /bitir yazarak etiketleme işlemi biter. 🤗"
   await event.reply(helptext,
                     buttons=(
-                      [Button.url('🌟 Beni Bir Gruba Ekle', 'https://t.me/KullaniciEtiketleme_bot?startgroup=a'),
-                       Button.url('📣 Support', 'https://t.me/djbyboss'),
-                      Button.url('👮‍♂️ Sahibim', 'https://t.me/byboss')]
+                      [Button.url('🌟 Beni Bir Gruba Ekle', 'https://t.me/LaCasadeEtiket_bot?startgroup=a'),
+                       Button.url('📣 Support', 'https://t.me/kurtoyunuu'),
+                      Button.url('👮‍♂️ Sahibim', 'https://t.me/Furkanbeyy')]
                     ),
                     link_preview=False
                    )
@@ -79,7 +79,7 @@ async def mentionall(event):
       usrnum += 1
       usrtxt += f"[{usr.first_name}](tg://user?id={usr.id}) "
       if event.chat_id not in anlik_calisan:
-        await event.respond("Etikeletme İşlemi Bitti 👥 İyi günler dileriz 🤗")
+        await event.respond("Etikeletme İşlemi Bitti 🛑 İyi günler dileriz 🤗")
         return
       if usrnum == 5:
         await client.send_message(event.chat_id, f"{usrtxt}\n\n{msg}")
@@ -106,5 +106,5 @@ async def mentionall(event):
         usrtxt = ""
 
 
-print(">> Bot çalıyor merak etme 👮‍♂️ @Byboss bilgi alabilirsin <<")
+print(">> Bot çalıyor merak etme 👮‍♂️ @Furkanbeyy bilgi alabilirsin <<")
 client.run_until_disconnected()
