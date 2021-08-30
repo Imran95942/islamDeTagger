@@ -1,4 +1,4 @@
-# Byboss All Bot
+# LaCasaDe Tagger Bot 🇹🇷
 _**Bu bot, gruplarda 10.000'e kadar üyeden bahsedebilir ve kanallarda 200'e kadar üyeden bahsedebilir. !**_
 
 ### 🏷 Bilgi
@@ -7,9 +7,9 @@ _**Bu bot, gruplarda 10.000'e kadar üyeden bahsedebilir ve kanallarda 200'e kad
 - yakında yeni notlarım gelecektir. 
 
 ### 🚀 Deploy to heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/mamibeyy/MentionAll-Bot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/furkanbeey/LaCasaDeTagger)
 
 ### 🎯 Krediler ve Diğer
-- [Byboss](https://t.me/byboss) bu Proje için ;)
+- [Furkan Bey](https://t.me/Furkanbeyy) Telegram'dan aramak için Beni Bulun 🕺
 
 **Beni Github'dan takip etmeyi unutmayın ✌️**
