@@ -23,12 +23,27 @@ async def cancel(event):
   anlik_calisan.remove(event.chat_id)
 
 
-@client.on(events.NewMessage(pattern="^/all ?(.*)"))
-async def mentionall(event):
-  global anlik_calisan
-  if event.is_private:
-    return await event.respond("__Bu komut gruplarda ve kanallarda kullanılabilir.!__")
-  
+@client.on(events.NewMessage(pattern="^/tagall ?(.*)"))
+
+async def _(event):
+    if event.fwd_from:
+        return
+    mentions = ""
+    counter = 0
+    chat = await event.get_input_chat()
+    async for x in borg.iter_participants(chat, 100):
+        mentions += f" \n [{x.first_name}](tg://user?id={x.id})"
+        counter += 1
+        if counter == 5:
+            await event.reply(mentions)
+            counter = 0
+            mentions = ""
+    if counter == 0:
+        await event.delete()
+        return
+    await event.reply(mentions)
+    await event.delete()  
+
   admins = []
   async for admin in client.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins):
     admins.append(admin.id)
