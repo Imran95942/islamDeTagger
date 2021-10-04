@@ -23,29 +23,6 @@ async def cancel(event):
   anlik_calisan.remove(event.chat_id)
 
 
-@client.on(events.NewMessage(pattern="^/start$"))
-async def start(event):
-  await event.reply("**Ассаламу 1алейкум!**, Я - @isIam95_bot. Я умею тегать людей в чатах и делать это ★\nмаксимально удобно для администраторов.",
-                    buttons=(
-                      [Button.url('🌟 Добавить меня в группу', 'https://t.me/Islam95_bot?startgroup=a'),
-                      Button.url('📣 Канал', 'https://t.me/isIam01'),
-                      Button.url('👮‍♂️ Владелец', 'https://t.me/isIam07')]
-                    ),
-                    link_preview=False
-                   )
-@client.on(events.NewMessage(pattern="^/help$"))
-async def help(event):
-  helptext = "**Alltagger bot'un Yardım Menüsü**\n\nKomut: /all \n  Bu komutu, başkalarına bahsetmek istediğiniz metinle birlikte kullanabilirsiniz. \n`Örnek: /all Günaydın!`  \nBu komutu yanıt olarak kullanabilirsiniz. herhangi bir mesaj Bot, yanıtlanan iletiye kullanıcıları etiketleyerek ve /bitir yazarak etiketleme işlemi biter. 🤗"
-  await event.reply(helptext,
-                    buttons=(
-                      [Button.url('🌟 добавить меня в группу', 'https://t.me/Islam95_bot?startgroup=a'),
-                       Button.url('📣 Канал', 'https://t.me/isIam01'),
-                      Button.url('👮‍♂️ Владелец', 'https://t.me/isIam07')]
-                    ),
-                    link_preview=False
-                   )
-
-
 @client.on(events.NewMessage(pattern="^/all ?(.*)"))
 async def mentionall(event):
   global anlik_calisan
@@ -56,7 +33,7 @@ async def mentionall(event):
   async for admin in client.iter_participants(event.chat_id, filter=ChannelParticipantsAdmins):
     admins.append(admin.id)
   if not event.sender_id in admins:
-    return await event.respond("__Yalnızca yöneticiler hepsinden bahsedebilir!__")
+    return await event.respond("__Недостаточно прав!__")
   
   if event.pattern_match.group(1):
     mode = "text_on_cmd"
